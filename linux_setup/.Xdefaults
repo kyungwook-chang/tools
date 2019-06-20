@@ -1,0 +1,239 @@
+XClock*chime:						true
+XClock*update:						1
+Scrollbar.JumpCursor:				True
+xmfonts*menu_bar*background:		#58f
+bitmap*BorderColor:			Gold
+bitmap*Mouse:				grey66
+bitmap*Background:			SteelBlue
+XTerm*background:			black
+XTerm*pointerColor:			white
+XTerm*foreground:			white
+XTerm*cursorColor:			yellow
+!XTerm*font: 				-schumacher-clean-medium-r-normal--16-160-75-75-c-80-iso646.1991-irv
+XTerm*faceName:				DejaVu Sans Mono:size=11
+!XTerm*faceName:				Source Code Pro:style=Medium:size=13
+!XTerm*faceSize:				13
+xterm*color0: rgb:00/00/00
+xterm*color1: rgb:a8/00/00
+xterm*color2: rgb:00/a8/00
+xterm*color3: rgb:a8/54/00
+xterm*color4: rgb:00/00/a8
+xterm*color5: rgb:a8/00/a8
+xterm*color6: rgb:00/a8/a8
+xterm*color7: rgb:a8/a8/a8
+xterm*color8: rgb:54/54/54
+xterm*color9: rgb:fc/54/54
+xterm*color10: rgb:54/fc/54
+xterm*color11: rgb:fc/fc/54
+xterm*color12: rgb:54/54/fc
+xterm*color13: rgb:fc/54/fc
+xterm*color14: rgb:54/fc/fc
+xterm*color15: rgb:fc/fc/fc
+
+XTerm*sunFunctionKeys:			True
+!XTerm*jumpScroll:			True
+XTerm*scrollBar:			false
+XTerm*saveLines:			512
+XTerm*scrollKey:			False
+XTerm*loginShell:			true
+XTerm*border:				gray
+xman*Command.foreground:		red
+xman*Command*font:			9x15
+xman*Sections.foreground:		blue
+xman*Sections*font:			9x15
+!
+xman*manualBrowser.foreground:		blue
+xman*manualBrowser*font:		9x15
+xman*Label.font:			9x15
+xman*directoryFontNormal:		9x15
+xman*Text.border:			blue
+OpenWindows.SetInput:			followmouse
+OpenWindows.MultiClickTimeout:		3
+OpenWindows.SelectDisplaysMenu:		False
+OpenWindows.WindowColor:		#c6d053
+OpenWindows.WorkspaceColor:		#19a478
+OpenWindows.Beep:			always
+OpenWindows.ScrollbarPlacement:		right
+OpenWindows.PopupJumpCursor:		True
+OpenWindows.DragRightDistance:		5
+OpenWindows.Palette:			fall
+OpenWindows.IconLocation:		right
+DClock*bell:				true
+DClock*scroll:				true
+DClock*date:				%d %M %Y
+Mwm*transientDecoration:		titlebar + resize - menu
+Mwm*keyBindings:			JDKIMKB
+Mwm*buttonBindings:			JDKIMBB
+Mwm*windowMenu:				WindowMenu
+Mwm*clientAutoPlace:			False
+Mwm*focusAutoRaise:			False
+Mwm*wMenuClick:				False
+Mwm*wMenuClick2:			False
+Mwm*useIconBox:				True
+Mwm*iconBoxGeometry:			1x6-2-2
+Mwm*XClock.clientDecoration:		border
+Mwm*fadeNormalIcon:			True
+Mwm*icon*fontList:			9x15bold
+Mwm*icon*background:			darkgreen
+Mwm*icon*foreground:			wheat
+Mwm*fontList:				-adobe-times-bold-i-normal--12-120-75-75-p-68-iso8859-1
+Mwm*iconImageMinimum:			26x26
+Mwm*iconImageMaximum:			75x75
+Mwm*iconImageBackground:		white
+Mwm*enforceKeyFocus:			False
+Mwm*background:				gray
+Mwm*saveUnder:				True
+Mwm*resizeBorderWidth:			5
+Mwm*frameBorderWidth:			5
+Mwm*XEyes.clientDecoration:		border
+Mwm*XEyes*clientDecoration:		border
+Mwm*xbiff*clientDecoration:		None
+Mwm*OClock.clientDecoration:		border
+Mwm*Xman*clientDecoration:		titlebar + resize + menu
+Mwm*XCalc.clientDecoration:		titlebar + resize + menu
+Mwm*foreground:				darkgreen
+Mwm*XLogo.clientDecoration:		border
+Mwm*menu*fontList:			-adobe-times-bold-i-normal--14-140-75-75-p-77-iso8859-1
+Mwm*menu*background:			marine
+Mwm*menu*foreground:			black
+Mwm*DClock.clientDecoration:		border
+Mwm*activeBackground:			goldenrod
+Mwm*activeForeground:			blue 
+Mwm*backgroundTile:			background
+Mwm*colormapFocusPolicy:		explicit
+Mwm*keyboardFocusPolicy:		pointer
+
+Tgif*TGIFICON:       			/usr/X11/lib/X11/tgif/tgificon.obj
+
+!Hanterm*font:				-schumacher-clean-medium-r-normal--16-160-75-75-c-80-iso8859-1
+!Hanterm*hangulFont: 			-kaist-iyagi-bold-r-normal--16-160-75-75-c-160-johabsh-1
+!Hanterm*hangulFont: 			-kaist-philgi-bold-r-normal--16-160-75-75-c-160-johab-1
+!Hanterm*hangulFont: 			-kaist-philgi-bold-r-normal--16-160-75-75-c-160-johabsh-1
+!Hanterm*hangulFont: 			-johap-bold-r-normal--16-160-75-75-c-160-johabs-1
+!Hanterm*EnglishFont:			-adobe-times-bold-i-normal--14-140-75-75-p-77-iso8859-1
+!HanTerm*Englishfont:			-schumacher-clean-bold-r-normal--16-160-75-75-c-80-iso8859-1
+Hanterm*title: 				Cygwin
+Hanterm*Font: 				-misc-fixed-medium-r-normal--12-120-*-*-*-*-iso8859-*
+Hanterm*hangulFont: 			-hanyang-kodig-medium-r-normal--12-120-*-*-*-*-ksc5601.1987-*
+Hanterm*saveLines:			512
+!Hanterm*scrollBar:			True
+!Hanterm*scrollBar*thickness:      	5
+Hanterm*foreground: 			white
+Hanterm*background: 			#202040
+Hanterm*cursorColor: 			yellow
+!Hanterm*eightBitInput:			False
+Hanterm*ttyModes: 			erase ^?
+!Hanterm*hangulKeyboard: 		3
+!Hanterm*VT100*translations: 		#override\
+! Shift<KeyPress>space: 		toggle-hangul()\n\
+! Ctrl<KeyPress>space: 			toggle-chat()\n\
+! Alt<KeyPress>F2: 			change-code()\n\
+! Ctrl<KeyPress>F2: 			code-input()
+
+*basicLocale:				C
+*displayLang:				C
+*inputLang:				C
+*numeric:				C
+*timeFormat:				C
+
+*VT100*color0: 				black
+*VT100*color1: 				hotpink
+*VT100*color2: 				green
+*VT100*color3: 				yellow
+*VT100*color4: 				skyblue
+*VT100*color5: 				magenta
+*VT100*color6: 				cyan
+*VT100*color7: 				wheat
+
+UNdertow.scopeSeparator:		/
+UNdertow.waveHeight:			18
+UNdertow.waveWidth:			850
+UNdertow.signalWidth:			100
+UNdertow.valueWidth:			80
+UNdertow.numWaves:			30
+UNdertow.waveHorizDistance:		4
+UNdertow.waveVertDistance:		4
+UNdertow.waveBorderWidth:		1
+UNdertow.longNames:			False
+UNdertow.leadingZero:			False
+!UNdertow*foreground:			white
+!UNdertow*background:			black
+!UNdertow*WaveWindow.background:	blue
+UNdertow*WaveWindow.translations:	#override\n\
+<Btn1Down>:        			setPoint()\n\
+Meta<Btn2Down>:    			moveCursor(2)\n\
+Ctrl<Btn2Down>:    			moveCursor(2)\n\
+<Btn2Down>:   				moveCursor(1)\n\
+<Btn3Down>:				doZoom()\n
+!UNdertow*zColor:			orange
+!UNdertow*xColor:			Red
+!UNdertow*zeroColor:			blue
+!UNdertow*oneColor:			green
+!UNdertow*busColor:			white
+!UNdertow*clock*zeroColor:		magenta
+!UNdertow*SignalWindow.background:	blue
+!UNdertow*choose*background:		brown
+!UNdertow*ChooseParent*background:	brown
+
+
+Netscape*XmTextField.fontList: 		-schumacher-clean-medium-r-*-*-*-140-*-*-*-*iso8859-*
+Netscape*topArea*XmTextField.fontList: 	-misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-1
+Netscape*documentFonts*defaultFont*iso-8859-1.prop: 	ms-arial-160-scale
+
+hanemacs.foreground:    		wheat
+hanemacs.cursorColor:       		yellow
+hanemacs.pointerColor:      		red
+hanemacs.background:        		black
+hanemacs.font: 				-schumacher-clean-bold-r-normal--16-160-75-75-c-80-iso8859-1
+
+
+gnuplot*background: 			white
+gnuplot*textColor: 			black
+gnuplot*borderColor: 			black
+gnuplot*axisColor: 			black
+gnuplot*line1Color: 			red
+gnuplot*line2Color: 			green
+
+gnuplot*line3Color: 			blue
+gnuplot*line4Color: 			magenta
+gnuplot*line5Color: 			cyan
+gnuplot*line6Color: 			sienna
+gnuplot*line7Color: 			orange
+gnuplot*line8Color: 			coral
+
+!gnuplot*background: 			black
+gnuplot*textGray: 			white
+gnuplot*borderGray: 			gray50
+gnuplot*axisGray: 			gray50
+gnuplot*line1Gray: 			gray100
+gnuplot*line2Gray: 			gray60
+gnuplot*line3Gray: 			gray80
+gnuplot*line4Gray: 			gray40
+gnuplot*line5Gray: 			gray90
+gnuplot*line6Gray: 			gray50
+gnuplot*line7Gray: 			gray70
+gnuplot*line8Gray: 			gray30
+
+gnuplot*borderWidth: 			2
+gnuplot*axisWidth: 			0
+gnuplot*line1Width: 			0
+gnuplot*line2Width: 			0
+gnuplot*line3Width: 			0
+gnuplot*line4Width: 			0
+gnuplot*line5Width: 			0
+gnuplot*line6Width: 			0
+gnuplot*line7Width: 			0
+gnuplot*line8Width: 			0
+
+gnuplot*borderDashes: 			0
+gnuplot*axisDashes: 			16
+gnuplot*line1Dashes: 			0
+gnuplot*line2Dashes: 			42
+gnuplot*line3Dashes: 			13
+gnuplot*line4Dashes: 			44
+gnuplot*line5Dashes: 			15
+gnuplot*line6Dashes: 			4441
+gnuplot*line7Dashes: 			42
+gnuplot*line8Dashes: 			13
+
+
