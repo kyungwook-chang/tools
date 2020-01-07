@@ -1,0 +1,5 @@
+# GIT
+
+git add -A: all changes
+git add .: without deletions
+git add -u: without new files
