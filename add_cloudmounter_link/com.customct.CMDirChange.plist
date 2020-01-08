@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.customct.CMdirChange</string>
+	<key>Program</key>
+	<string>/Users/kyungwook222/scripts/add_cloudmounter_link/add_cloudmounter_link.zsh</string>
+	<key>StandardErrorPath</key>
+	<string>/tmp/com.customct.CMdirChange.err</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/com.customct.CMdirChange.out</string>
+	<key>WatchPaths</key>
+	<array>
+		<string>/Users/kyungwook222/.CMVolumes</string>
+	</array>
+</dict>
+</plist>
