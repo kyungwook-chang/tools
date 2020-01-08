@@ -1,13 +1,24 @@
+#!/bin/tcsh
+
 alias c             clear
 alias .             suspend
 alias h             history
-#alias cd			'cd \!*;set prompt="$cwd ! > ";ls -Fap'
 alias rm            rm -rf
 
 set                 k_tb = 
-alias ls            'ls -ltr --color'
-alias l             'ls -asFtr'
-alias ll            'ls -lasFtr'
+
+if ( "$OSTYPE" =~ bsd* ) then
+	alias cd			'cd \!*;set prompt="$cwd ! > ";ls -apFG'
+	alias ls			'ls -lG'
+	alias l				'ls -asFG'
+	alias ll			'ls -alsFG'
+else
+	#alias cd			'cd \!*;set prompt="$cwd ! > ";ls -Fap'
+	alias ls            'ls -ltr --color'
+	alias l             'ls -asFtr'
+	alias ll            'ls -lasFtr'
+endif
+
 alias vi            '/usr/bin/vim -u ~/.vimrc'
 alias v             '/usr/bin/vim -u ~/.vimrc'
 alias ctags         'ctags --fields=+l --c++-kinds=+p --extra=+q'

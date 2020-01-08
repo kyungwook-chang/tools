@@ -16,7 +16,7 @@
 # This is the second version of this script. It rejects "screen" terminals and uses aliases to make the code readable.
 
 # Prevent the script from running twice.
-if ( ! ($?iterm2_shell_integration_installed)) then
+#if ( ! ($?iterm2_shell_integration_installed)) then
   # Make sure this is a login shell.
   if ( $?loginsh) then
 
@@ -87,7 +87,7 @@ if ( ! ($?iterm2_shell_integration_installed)) then
       # Define precmd, which runs just before the prompt is printed. This could go
       # in $prompt but this keeps things a little simpler in here.
       # No parens or iterm2_start call is allowed prior to evaluating the last status.
-      alias precmd '_iterm2_last_status; _iterm2_update_current_state'
+      #alias precmd '_iterm2_last_status; _iterm2_update_current_state'
 
       # Define postcmd, which runs just before a command is executed.
       alias postcmd '(_iterm2_between_prompt_and_exec)'
@@ -96,14 +96,17 @@ if ( ! ($?iterm2_shell_integration_installed)) then
       set noglob
 
       # Remove the terminal space from the prompt to work around a tcsh bug.
-      set _iterm2_truncated_prompt=`echo "$prompt" | sed -e 's/ $//'`
+      #set _iterm2_truncated_prompt=`echo "$prompt" | sed -e 's/ $//'`
 
       # Wrap the prompt in FinalTerm escape codes and re-add a terminal space.
-      set prompt="%{"`_iterm2_before_prompt`"%}$_iterm2_truncated_prompt%{"`_iterm2_after_prompt`"%} "
+      #set prompt="%{"`_iterm2_before_prompt`"%}$_iterm2_truncated_prompt%{"`_iterm2_after_prompt`"%} "
+      set seg_prompt = "`seg-prompt project host engine` %B%/%b % "
+      alias precmd 'set prompt="%{"`_iterm2_before_prompt`"%}$seg_prompt%{"`_iterm2_after_prompt`"%} "; _iterm2_last_status; _iterm2_update_current_state '
+      
 
       # Turn globbing back on.
       unset noglob
     endif
   endif
-endif
-alias imgcat ~/.iterm2/imgcat;alias imgls ~/.iterm2/imgls;alias it2api ~/.iterm2/it2api;alias it2attention ~/.iterm2/it2attention;alias it2check ~/.iterm2/it2check;alias it2copy ~/.iterm2/it2copy;alias it2dl ~/.iterm2/it2dl;alias it2getvar ~/.iterm2/it2getvar;alias it2git ~/.iterm2/it2git;alias it2setcolor ~/.iterm2/it2setcolor;alias it2setkeylabel ~/.iterm2/it2setkeylabel;alias it2ul ~/.iterm2/it2ul;alias it2universion ~/.iterm2/it2universion
+#endif
+alias imgcat ~/.iterm2/imgcat;alias imgls ~/.iterm2/imgls;alias it2attention ~/.iterm2/it2attention;alias it2check ~/.iterm2/it2check;alias it2copy ~/.iterm2/it2copy;alias it2dl ~/.iterm2/it2dl;alias it2getvar ~/.iterm2/it2getvar;alias it2git ~/.iterm2/it2git;alias it2setcolor ~/.iterm2/it2setcolor;alias it2setkeylabel ~/.iterm2/it2setkeylabel;alias it2ul ~/.iterm2/it2ul;alias it2universion ~/.iterm2/it2universion

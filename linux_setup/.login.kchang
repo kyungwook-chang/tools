@@ -1,1 +1,8 @@
-test -e "${HOME}/.iterm2_shell_integration.tcsh" && source "${HOME}/.iterm2_shell_integration.tcsh"
+#!/bin/tcsh
+
+if ( "$OSTYPE" =~ bsd* ) then
+#test -e "${HOME}/.iterm2_shell_integration.tcsh" && source "${HOME}/.iterm2_shell_integration.tcsh"
+	test -e "${HOME}/Github/linux_setup/.iterm2_shell_integration.tcsh" && source "${HOME}/Github/linux_setup/.iterm2_shell_integration.tcsh"
+else
+	test -e "${HOME}/Github/linux_setup/.iterm2_shell_integration.apple.tcsh" && source "${HOME}/Github/linux_setup/.iterm2_shell_integration.apple.tcsh"
+endif
