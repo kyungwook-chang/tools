@@ -3,3 +3,6 @@
 git add -A: all changes
 git add .: without deletions
 git add -u: without new files
+
+git checkout <filename>: revert an uncommitted change
+git reset --hard: revert all uncommited changes in your working copy

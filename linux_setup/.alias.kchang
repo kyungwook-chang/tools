@@ -50,3 +50,5 @@ alias tyo           'ssh -X kwchang@tyo-kwchang01.csg.apple.com'
 
 alias scp_aus		scp kwchang@aus-kwchang01.csg.apple.com:\!:1 \!:2
 alias scp_scv		scp kwchang@scv-kwchang01.csg.apple.com:\!:1 \!:2
+alias scp_isr		scp kwchang@isr-kwchang01.csg.apple.com:\!:1 \!:2
+alias scp_tyo		scp kwchang@tyo-kwchang01.csg.apple.com:\!:1 \!:2
