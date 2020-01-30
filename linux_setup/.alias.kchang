@@ -47,8 +47,12 @@ alias aus           'ssh -X kwchang@aus-kwchang01.csg.apple.com'
 alias scv           'ssh -X kwchang@scv-kwchang01.csg.apple.com'
 alias isr           'ssh -X kwchang@isr-kwchang01.csg.apple.com'
 alias tyo           'ssh -X kwchang@tyo-kwchang01.csg.apple.com'
+alias ger			'ssh -X kwchang@ger-kwchang01.csg.apple.com'
+alias msc			'ssh -X kwchang@msc-kwchang01.csg.apple.com'
 
 alias scp_aus		scp kwchang@aus-kwchang01.csg.apple.com:\!:1 \!:2
 alias scp_scv		scp kwchang@scv-kwchang01.csg.apple.com:\!:1 \!:2
 alias scp_isr		scp kwchang@isr-kwchang01.csg.apple.com:\!:1 \!:2
 alias scp_tyo		scp kwchang@tyo-kwchang01.csg.apple.com:\!:1 \!:2
+alias scp_ger		scp kwchang@ger-kwchang01.csg.apple.com:\!:1 \!:2
+alias scp_msc		scp kwchang@msc-kwchang01.csg.apple.com:\!:1 \!:2
