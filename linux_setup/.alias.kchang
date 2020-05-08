@@ -7,7 +7,7 @@ alias rm            rm -rf
 
 set                 k_tb = 
 
-if ( "$OSTYPE" =~ bsd* ) then
+if ( "$OSTYPE" =~ darwin* ) then
 	alias cd			'cd \!*;set prompt="$cwd ! > ";ls -apFG'
 	alias ls			'ls -lG'
 	alias l				'ls -asFG'

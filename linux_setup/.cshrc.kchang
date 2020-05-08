@@ -1,6 +1,6 @@
 #!/bin/tcsh
 
-if ( "$OSTYPE" =~ bsd* ) then
+if ( "$OSTYPE" =~ darwin* ) then
 	set 	cdpath		= (~)
 	set 	prompt		= "$cwd ! > "
 endif
