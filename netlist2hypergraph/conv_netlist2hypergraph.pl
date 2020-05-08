@@ -3,30 +3,33 @@
 use strict;
 use warnings;
 use Getopt::Long;
-use Data::Dumper;
+#use Data::Dumper;
 use File::Basename;
 
 my $module;
-my $netlist = "./testbench/aes_128_syn.v";
+my $netlist = "";
 my $format = "";
 
-GetOptions (	"nelist=s"	=> \$netlist,
+GetOptions (	"netlist=s"	=> \$netlist,
 				"format=s"	=> \$format
 );
+
+if ($netlist eq "" || $format eq "") {
+	die("Usage: conv_netlist2hypergraph.pl -netlist <path_to_netlist> -format <output_format (hgr, bookshelf)>\n");
+}
 
 my @wire_map = ();
 my @inst_map = ();
 
 sub parse_netlist {
 	my ($netlist_filename) = @_;
-	open (FIN, "$netlist_filename");
+	open (FIN, "$netlist_filename") || die("netlist file, $netlist_filename, not found\n");
 	my $line_buf = "";
 	while (<FIN>) {
 		my $line = $_;
 		chomp $line;
 		$line_buf .= $line;
 		if ($line =~ /;\s*$/) {
-			#print "$line_buf\n";
 			if ($line_buf =~ /^\s*input\s+(.*)\s*;\s*$/) {
 				#input definition
 				my @cur_inputs = $1 =~ /\S+/g;
@@ -69,7 +72,6 @@ sub parse_netlist {
 				$module->{inst}{$inst_name}->{num} = scalar @inst_map;
 				push @inst_map, $inst_name;
 				foreach my $port_map (@port_maps) {
-					#print "PORT_MAP: $port_map\n";
 					$port_map =~ /\.(\S+)\s*\(\s*(\S+)\s*\)/;
 					my $inst_term = $1;
 					my $net = $2;
@@ -81,7 +83,6 @@ sub parse_netlist {
 						$module->{inst}{$inst_name}->{term}{$inst_term}->{is_output} = 0;
 					}
 
-					#print "$inst_name $inst_term -> $net\n";
 					my $conn;
 					$conn->{inst} = $inst_name;
 					$conn->{pin} = $inst_term;
@@ -127,6 +128,20 @@ sub write_bookshelf {
 	my $pl_filename = $out_basename.".pl";
 	my $scl_filename = $out_basename.".scl";
 
+	my $num_inst = scalar keys %{ $module->{inst} };
+	my $num_wire = scalar keys %{ $module->{wire} };
+	my $num_port = 0;
+	foreach my $wire_name (keys %{ $module->{wire} }) {
+		if ($module->{wire}{$wire_name}->{is_port}) {
+			$num_port++;
+		}
+	}
+	my $num_pin = 0;
+	foreach my $inst_name (keys %{ $module->{inst} }) {
+		my $num_inst_pin = scalar keys %{ $module->{inst}{$inst_name}->{term} };
+		$num_pin += $num_inst_pin
+	}
+
 	#aux file
 	open (FOUT, ">", "$aux_filename");
 	print FOUT "RowBasedPlacement : $nodes_filename $nets_filename $wts_filename $pl_filename $scl_filename";
@@ -134,31 +149,102 @@ sub write_bookshelf {
 
 	#nodes file
 	open (FOUT, ">", "$nodes_filename");
+	print FOUT "UCLA nodes 1.0\n\n";
+	my $num_node = $num_inst + $num_port;
+	print FOUT "NumNodes : $num_node\n";
+	print FOUT "NumTerminals : $num_port\n\n";
+	foreach my $inst_name (keys %{ $module->{inst} }) {
+		print FOUT "\t$inst_name\t0.0\t0.0\n";
+	}
+	foreach my $wire_name (keys %{ $module->{wire} }) {
+		if ($module->{wire}{$wire_name}->{is_port}) {
+			print FOUT "\t$wire_name\t0.0\t0.0\tterminal\n";
+		}
+	}
 	close FOUT;
 
 	#nets file
 	open (FOUT, ">", "$nets_filename");
+	print FOUT "UCLA nets 1.0\n\n";
+	print FOUT "NumNets : $num_wire\n";
+	# I'm not sure we should deal with ports... I think we should...
+	$num_pin += $num_port;
+	print FOUT "NumPins : $num_pin\n\n";
+	foreach my $wire_name (keys %{ $module->{wire} } ) {
+		my $cur_wire = $module->{wire}{$wire_name};
+		my $degree = scalar @{ $cur_wire->{term} };
+		print FOUT "NetDegree : $degree\n";
+		foreach my $term (@{ $cur_wire->{term} } ) {
+			my $term_dir = "I";
+			if ($term->{is_driver}) {
+				$term_dir = "O";
+			} else {
+				$term_dir = "I";
+			}
+			print FOUT "\t$term->{inst}\t$term_dir : 0.0 0.0\n";	
+		}
+		# I'm not sure we should deal with ports... I think we should...
+		if ($cur_wire->{is_port}) {
+			my $port_dir = "I";
+			if ($cur_wire->{is_input}) {
+				# input port is a driver of a net (equivalent to output of a pin)
+				$port_dir = "O";
+			} else {
+				$port_dir = "I";
+			}
+			print FOUT "\t$wire_name\t$port_dir : 0.0 0.0\n";	
+		}
+	}
 	close FOUT;
 
 	#wts file
 	open (FOUT, ">", "$wts_filename");
+	print FOUT "UCLA wts 1.0\n\n";
+	foreach my $inst_name (keys %{ $module->{inst} }) {
+		print FOUT "\t$inst_name\t1\n";
+	}
+	foreach my $wire_name (keys %{ $module->{wire} }) {
+		if ($module->{wire}{$wire_name}->{is_port}) {
+			print FOUT "\t$wire_name\t1\n";
+		}
+	}
 	close FOUT;
 
 	#pl file
 	open (FOUT, ">", "$pl_filename");
+	print FOUT "UCLA pl 1.0\n\n";
+	foreach my $inst_name (keys %{ $module->{inst} }) {
+		print FOUT "\t$inst_name\t0\t0\t:\tN\n";
+	}
+	foreach my $wire_name (keys %{ $module->{wire} }) {
+		if ($module->{wire}{$wire_name}->{is_port}) {
+			print FOUT "\t$wire_name\t0\t0\t:\tN\n";
+		}
+	}
 	close FOUT;
 
 	#scl file
 	open (FOUT, ">", "$scl_filename");
+	print FOUT "UCLA scl 1.0\n\n";
+	print FOUT "NumRows : 0\n";
+	print FOUT "CoreRow Horizontal\n";
+	print FOUT " Coordinate : 0\n";
+	print FOUT " Height : 0\n";
+	print FOUT " Sitewidth : 0\n";
+	print FOUT " Sitespacing : 0\n";
+	print FOUT " Siteorient : 0\n";
+	print FOUT " Sitesymmetry : 0\n";
+	print FOUT " SubrowOrigin : 0\tNumSites : 0\n";
+	print FOUT "End\n";
 	close FOUT;
 }
 
 parse_netlist($netlist);
-#if ($format eq "bookshelf") {
+if ($format eq "bookshelf") {
 	my $out_basename = basename($netlist, ".v");
 	write_bookshelf($out_basename);
-#} else {
+} else {
 	my $out_filename = basename($netlist, ".v");
 	$out_filename .= ".hgr";
 	write_hgr($out_filename);
-#}
+}
