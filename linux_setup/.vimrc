@@ -82,4 +82,5 @@ set path+=/nethome/kchang63/project/design/OpenSPARCT2/
 
 " Keymaps
 vmap	<F2>	:'<,'>s/^\([\t ]*\)\([a-zA-Z0-9_]*\),/\1\.\2\t\t\t(\2),/g <CR>
-
+"set tabstop=4
+"set expandtab

@@ -17,3 +17,4 @@ set		ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=1
 bindkey '^[[1;2D' backward-word
 bindkey '^[[1;2C' forward-word
 
+setenv	IEX_API_KEY	pk_f0379498ba2a42619099da26ae2c3824
